@@ -2,13 +2,21 @@ import 'package:video_streamer/model/movie.dart';
 
 class Query {
   final int page;
-  final List<Movie> results;
+  final List<dynamic> results;
 
-  Query(this.page, this.results);
+  List<dynamic> dynamicList;
 
-  Query.fromJson(Map<String, dynamic> json)
-      : page = json['page'],
-        results = json['results'];
+  Query({this.page, this.results});
+
+  factory Query.fromJson(Map<String, dynamic> json) {
+    return Query(
+      page: json['page'] as int,
+      results: json['results'] as List<dynamic>,
+    );
+  }
+
+  List<Movie> getList() =>
+      results.map<Movie>((e) => Movie.fromJson(e)).toList();
 
   Map<String, dynamic> toJson() => {
         'page': page,

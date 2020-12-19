@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:video_streamer/model/movie.dart';
 import 'package:video_streamer/pages/pdp.dart';
 
 class JacketList extends StatelessWidget {
   // imgList is a list of image urls, set from the constructor.
-  final List<String> imgList;
+  final List<Movie> movieList;
 
   // title is the title of this slider list, set from the constructor.
   final String title;
 
   // In the constructor, require an image list and a title.
-  JacketList({Key key, @required this.imgList, @required this.title})
+  JacketList({Key key, @required this.movieList, @required this.title})
       : super(key: key);
 
   @override
@@ -47,11 +48,11 @@ class JacketList extends StatelessWidget {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   // Let the ListView know how many items it needs to build.
-                  itemCount: imgList.length,
+                  itemCount: movieList.length,
                   // Provide a builder function. This is where the magic happens.
                   // Iterate through the imgList and display the imageUrl in the ListView.
                   itemBuilder: (context, index) {
-                    final imageUrl = imgList[index];
+                    final movie = movieList[index];
 
                     // Individual movie jacket container.
                     return Container(
@@ -59,7 +60,7 @@ class JacketList extends StatelessWidget {
                         width: 100.0,
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: NetworkImage(imageUrl),
+                            image: NetworkImage(movie.posterPath),
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -67,7 +68,8 @@ class JacketList extends StatelessWidget {
                           Navigator.push<Widget>(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => ImageScreen(imageUrl),
+                              builder: (context) =>
+                                  ImageScreen(movie.posterPath),
                             ),
                           );
                         }));

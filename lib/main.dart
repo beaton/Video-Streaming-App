@@ -1,42 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:video_streamer/init.dart';
 import 'package:video_streamer/pages/home.dart';
+import 'package:video_streamer/splash_screen.dart';
 
-void main() => runApp(Avod());
+//void main() => runApp(AvodApp());
 
-class Avod extends StatelessWidget {
+void main() {
+  print("Starting application.");
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(AvodApp());
+}
+
+class AvodApp extends StatelessWidget {
+  final Future _initFuture = Init.initialize();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Welcome to Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('xyz'),
-        ),
-        body: Container(child: HomePage()),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              label: 'Search',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.download_outlined),
-              label: 'Download',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
-              label: 'Settings',
-            ),
-          ],
-          currentIndex: 0,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.grey,
-          //onTap: _onItemTapped,
-        ),
+      title: 'Initialization',
+      home: FutureBuilder(
+        future: _initFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return HomePage();
+          } else {
+            return SplashScreen();
+          }
+        },
       ),
     );
   }

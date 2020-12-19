@@ -1,53 +1,58 @@
 class Movie {
   final bool adult;
-  final String backdrop_path;
-  final String original_title;
+  String backdropPath;
+  final String originalTitle;
   final String overview;
-  final String popularity;
-  final String poster_path;
-  final String release_date;
+  final double popularity;
+  String posterPath;
+  final String releaseDate;
   final String title;
-  final double vote_average;
-  final double vote_count;
+  final double voteAverage;
+  final int voteCount;
   final int id;
 
   Movie(
       this.title,
       this.adult,
-      this.backdrop_path,
-      this.original_title,
+      this.backdropPath,
+      this.originalTitle,
       this.overview,
       this.popularity,
-      this.poster_path,
-      this.release_date,
-      this.vote_average,
-      this.vote_count,
+      this.posterPath,
+      this.releaseDate,
+      this.voteAverage,
+      this.voteCount,
       this.id);
+
+  @override
+  String toString() {
+    return 'Movie[title=$title, releaseDate=$releaseDate, id=${id.toString()}]';
+  }
 
   Movie.fromJson(Map<String, dynamic> json)
       : title = json['title'],
         adult = json['adult'],
-        backdrop_path = json['backdrop_path'],
-        original_title = json['original_title'],
+        backdropPath = json['backdrop_path'],
+        originalTitle = json['original_title'],
         overview = json['overview'],
         popularity = json['popularity'],
-        poster_path = json['poster_path'],
-        release_date = json['release_date'],
-        vote_average = json['vote_average'],
-        vote_count = json['vote_count'],
+        posterPath = json['poster_path'],
+        releaseDate = json['release_date'],
+        voteAverage = json['vote_average'].toDouble(),
+        voteCount = json['vote_count'],
         id = json['id'];
 
   Map<String, dynamic> toJson() => {
         'title': title,
         'adult': adult,
-        'backdrop_path': backdrop_path,
-        'original_title': original_title,
+        'backdrop_path': backdropPath,
+        'original_title': originalTitle,
         'overview': overview,
         'popularity': popularity,
-        'poster_path': poster_path,
-        'release_date': release_date,
-        'vote_average': vote_average,
-        'vote_count': vote_count,
+        'poster_path': posterPath,
+        'release_date': releaseDate,
+        'vote_average': voteAverage,
+        'vote_count': voteCount,
         'id': id,
       };
 }
