@@ -19,6 +19,8 @@ Minimum configurtion (tested)
 * Engine • revision ae90085a84
 * Tools • Dart 2.10.4
 
+Don't forget to run Flutter doctor.
+
 ### Configuration file
 
 You will need to create a configuration file: /assets/cfg/properties.json
