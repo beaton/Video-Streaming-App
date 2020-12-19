@@ -29,7 +29,9 @@
 .packages
 .pub-cache/
 .pub/
+/ios/build/
 /build/
+/assets/cfg/properties.json
 
 # Web related
 lib/generated_plugin_registrant.dart
