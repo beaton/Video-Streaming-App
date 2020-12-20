@@ -15,7 +15,7 @@ class _MyImageScreen extends State<ImageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('ImageScreen'),
+          title: Text('Product Detail Page'),
         ),
         body: Image.network(url, width: double.infinity));
   }

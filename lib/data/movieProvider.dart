@@ -11,14 +11,15 @@ final String popular = 'https://api.themoviedb.org/3/movie/popular';
 
 final String topRated = 'https://api.themoviedb.org/3/movie/top_rated';
 
+final String similar = 'https://api.themoviedb.org/3/movie/429/similar';
+
 /// Singleton instance to retrieve and cache movies.
-class MovieDataProvider {
-  MovieDataProvider._privateConstructor();
+class MovieProvider {
+  MovieProvider._privateConstructor();
 
-  static MovieDataProvider get instance => _instance;
+  static MovieProvider get instance => _instance;
 
-  static final MovieDataProvider _instance =
-      MovieDataProvider._privateConstructor();
+  static final MovieProvider _instance = MovieProvider._privateConstructor();
 
   /// File properties initialized and passed in from init.dart.
   GlobalConfiguration cfg;
@@ -38,6 +39,9 @@ class MovieDataProvider {
   // Top rated spahetti western titles.
   List<Movie> spaghettiMovies;
 
+  // Similar movies to x (have to specify x in the query).
+  List<Movie> similarMovies;
+
   /// Initialize this Singleton instance.
   Future<void> init() async {
     tmdbBaseUrl = cfg.getValue("tmdbBaseUrl");
@@ -48,6 +52,7 @@ class MovieDataProvider {
     print("Initialize the movie catalog.");
     popularMovies = await fetchMovies(url: popular);
     topRatedMovies = await fetchMovies(url: topRated);
+    similarMovies = await fetchMovies(url: similar);
   }
 
   /// Refresh the lists by calling the init() method.

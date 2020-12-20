@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:theme_provider/theme_provider.dart';
 import 'package:video_streamer/init.dart';
 import 'package:video_streamer/pages/home.dart';
 import 'package:video_streamer/splash_screen.dart';
@@ -30,18 +32,53 @@ class AvodApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Initialization',
-      home: FutureBuilder(
-        future: _initFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return HomePage();
+    return ThemeProvider(
+        saveThemesOnChange: true,
+        loadThemeOnInit: false,
+        onInitCallback: (controller, previouslySavedThemeFuture) async {
+          String savedTheme = await previouslySavedThemeFuture;
+          if (savedTheme != null) {
+            controller.setTheme(savedTheme);
           } else {
-            return SplashScreen();
+            Brightness platformBrightness =
+                SchedulerBinding.instance.window.platformBrightness;
+            if (platformBrightness == Brightness.dark) {
+              controller.setTheme('dark');
+            } else {
+              controller.setTheme('custom_theme');
+            }
+            controller.forgetSavedTheme();
           }
         },
-      ),
-    );
+        themes: <AppTheme>[
+          AppTheme.light(id: 'light'),
+          AppTheme.dark(id: 'dark'),
+          AppTheme(
+            description: "custom theme",
+            id: "custom_theme", // Id(or name) of the theme(Has to be unique)
+            data: ThemeData(
+              // Real theme data
+              primaryColor: Colors.white,
+              accentColor: Colors.red,
+            ),
+          ),
+        ],
+        child: ThemeConsumer(
+            child: Builder(
+                builder: (themeContext) => MaterialApp(
+                      title: 'Initialization',
+                      theme: ThemeProvider.themeOf(themeContext).data,
+                      home: FutureBuilder(
+                        future: _initFuture,
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            return HomePage();
+                          } else {
+                            return SplashScreen();
+                          }
+                        },
+                      ),
+                    ))));
   }
 }

@@ -1,5 +1,5 @@
 import 'package:global_configuration/global_configuration.dart';
-import 'package:video_streamer/data/movieDataProvider.dart';
+import 'package:video_streamer/data/movieProvider.dart';
 
 /// Note the async keyword in the function declaration.
 /// Many initialization routines are built to run asynchronously.
@@ -21,8 +21,8 @@ class Init {
     /// Initialize the MovieDataProvider class.
     GlobalConfiguration cfg = new GlobalConfiguration();
     await cfg.loadFromAsset("properties.json");
-    MovieDataProvider.instance.cfg = cfg;
-    await MovieDataProvider.instance.init();
+    MovieProvider.instance.cfg = cfg;
+    await MovieProvider.instance.init();
   }
 
   // Load global property settings for the application.
