@@ -26,9 +26,10 @@ Don't forget to run Flutter doctor.
 You will need to create a configuration file: /assets/cfg/properties.json
 
 With the following contents, 
-
+```
 {
   "tmdbApiKey": "TMDB APIKey",
   "tmdbBaseUrl": "https://image.tmdb.org/t/p/w500",
   "language": "en-US"
 }
+```
