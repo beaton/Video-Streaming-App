@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("The App")),
       body: ListView(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(0.0),
         children: <Widget>[
           Container(
             child: CarouselSlider(
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                   builder: (BuildContext context) {
                     return Container(
                         width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 5.0),
+                        margin: EdgeInsets.symmetric(horizontal: 0.0),
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(i),
@@ -49,15 +49,21 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Container(
+              padding: EdgeInsets.all(0.0),
+              margin: EdgeInsets.only(top: 10.0),
               // 'Recommended for you' list
               child: JacketList(
                   movieList: getPopularMovieList(),
                   title: 'Recommended for you')),
           Container(
+              padding: EdgeInsets.all(0.0),
+              margin: EdgeInsets.symmetric(vertical: 0.0),
               // 'New to the app' list
               child: JacketList(
                   movieList: getTopRatedMovieList(), title: 'New to xyz')),
           Container(
+              padding: EdgeInsets.all(0.0),
+              margin: EdgeInsets.symmetric(vertical: 0.0),
               // 'New to the app' list
               child: JacketList(
                   movieList: getSimilarMovieList(),

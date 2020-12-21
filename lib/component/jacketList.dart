@@ -17,12 +17,13 @@ class JacketList extends StatelessWidget {
   Widget build(BuildContext context) {
     /// Vertical parent widget container...
     return Container(
-        margin: EdgeInsets.symmetric(vertical: 20.0),
+        margin: EdgeInsets.symmetric(vertical: 0.0),
+        padding: EdgeInsets.all(0.0),
         height: 180.0,
 
         /// Vertical column within the parent container...
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               /// Slider header container...
               SizedBox(
@@ -32,7 +33,8 @@ class JacketList extends StatelessWidget {
                   child: Text(
                     title,
                     style: TextStyle(
-                      color: Colors.blueGrey,
+                      wordSpacing: 1,
+                      color: Colors.black87,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
