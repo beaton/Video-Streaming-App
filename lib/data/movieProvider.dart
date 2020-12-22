@@ -27,8 +27,11 @@ class MovieProvider {
   // TMDB API Key. Required for querying TMDB service.
   String apiKey;
 
-  // TMDB Base HTTP URL. Required for querying TMDB service.
-  String tmdbBaseUrl;
+  // TMDB Movie Jacket Base HTTP URL. Required for querying TMDB service.
+  String tmdbJacketBaseUrl;
+
+// TMDB Movie Banner Base HTTP URL. Required for querying TMDB service.
+  String tmdbBannerBaseUrl;
 
   // Popular movie titles.
   List<Movie> popularMovies;
@@ -44,10 +47,9 @@ class MovieProvider {
 
   /// Initialize this Singleton instance.
   Future<void> init() async {
-    tmdbBaseUrl = cfg.getValue("tmdbBaseUrl");
+    tmdbJacketBaseUrl = cfg.getValue("tmdbJacketBaseUrl");
+    tmdbBannerBaseUrl = cfg.getValue("tmdbBannerBaseUrl");
     apiKey = cfg.getValue("tmdbApiKey");
-    print("TMDB Base URL: " + tmdbBaseUrl);
-    print("TMDB API Key: " + apiKey);
 
     print("Initialize the movie catalog.");
     popularMovies = await fetchMovies(url: popular);
@@ -92,9 +94,9 @@ class MovieProvider {
   // Prepend the tmdb URL to each movie poster path.
   expandUrls(Movie aMovie) {
     String aPath = aMovie.posterPath;
-    aMovie.posterPath = tmdbBaseUrl + aPath;
+    aMovie.posterPath = tmdbJacketBaseUrl + aPath;
 
     String backdropPath = aMovie.backdropPath;
-    aMovie.backdropPath = tmdbBaseUrl + backdropPath;
+    aMovie.backdropPath = tmdbBannerBaseUrl + backdropPath;
   }
 }

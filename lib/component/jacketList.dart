@@ -35,7 +35,7 @@ class JacketList extends StatelessWidget {
                     style: TextStyle(
                       wordSpacing: 1,
                       color: Colors.black87,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
                       fontSize: 15,

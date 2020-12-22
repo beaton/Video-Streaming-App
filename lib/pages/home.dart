@@ -60,7 +60,8 @@ class HomePage extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 0.0),
               // 'New to the app' list
               child: JacketList(
-                  movieList: getTopRatedMovieList(), title: 'New to The App')),
+                  movieList: getTopRatedMovieList(),
+                  title: 'New to The <app name goes here>')),
           Container(
               padding: EdgeInsets.all(0.0),
               margin: EdgeInsets.symmetric(vertical: 0.0),

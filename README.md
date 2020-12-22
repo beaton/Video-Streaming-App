@@ -29,7 +29,8 @@ With the following contents,
 ```
 {
   "tmdbApiKey": "TMDB APIKey",
-  "tmdbBaseUrl": "https://image.tmdb.org/t/p/w500",
+  "tmdbJacketBaseUrl": "https://image.tmdb.org/t/p/w200",
+  "tmdbBannerBaseUrl": "https://image.tmdb.org/t/p/w400",
   "language": "en-US"
 }
 ```
