@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("The App")),
+      appBar: AppBar(title: Text("Home")),
       body: ListView(
         padding: const EdgeInsets.all(0.0),
         children: <Widget>[
