@@ -103,6 +103,11 @@ class _MyImageScreen extends State<ImageScreen> {
                   ),
                   stars,
                 ],
+              ),
+              Row(
+                ///mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[Flexible(child: new Text(movie.overview))],
               )
             ])));
   }
