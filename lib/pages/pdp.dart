@@ -18,6 +18,6 @@ class _MyImageScreen extends State<ImageScreen> {
         appBar: AppBar(
           title: Text('Product Detail Page'),
         ),
-        body: Image.network(movie., width: double.infinity));
+        body: Image.network(movie.backdropPath, width: double.infinity));
   }
 }
