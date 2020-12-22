@@ -92,7 +92,9 @@ class MovieProvider {
   // Prepend the tmdb URL to each movie poster path.
   expandUrls(Movie aMovie) {
     String aPath = aMovie.posterPath;
-    aPath = tmdbBaseUrl + aPath;
-    aMovie.posterPath = aPath;
+    aMovie.posterPath = tmdbBaseUrl + aPath;
+
+    String backdropPath = aMovie.backdropPath;
+    aMovie.backdropPath = tmdbBaseUrl + backdropPath;
   }
 }

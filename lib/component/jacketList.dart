@@ -70,8 +70,7 @@ class JacketList extends StatelessWidget {
                           Navigator.push<Widget>(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  ImageScreen(movie.posterPath),
+                              builder: (context) => ImageScreen(movie),
                             ),
                           );
                         }));

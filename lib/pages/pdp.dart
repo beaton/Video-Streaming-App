@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:video_streamer/model/movie.dart';
 
 class ImageScreen extends StatefulWidget {
-  final String url;
-  ImageScreen(this.url);
+  final Movie movie;
+  ImageScreen(this.movie);
 
   @override
-  _MyImageScreen createState() => _MyImageScreen(url);
+  _MyImageScreen createState() => _MyImageScreen(movie);
 }
 
 class _MyImageScreen extends State<ImageScreen> {
-  final String url;
-  _MyImageScreen(this.url);
+  final Movie movie;
+  _MyImageScreen(this.movie);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: Text('Product Detail Page'),
         ),
-        body: Image.network(url, width: double.infinity));
+        body: Image.network(movie., width: double.infinity));
   }
 }
