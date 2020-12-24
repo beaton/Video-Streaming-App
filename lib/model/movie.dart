@@ -35,7 +35,7 @@ class Movie {
         backdropPath = json['backdrop_path'],
         originalTitle = json['original_title'],
         overview = json['overview'],
-        popularity = json['popularity'],
+        popularity = json['popularity'].toDouble(),
         posterPath = json['poster_path'],
         releaseDate = json['release_date'],
         voteAverage = json['vote_average'].toDouble(),

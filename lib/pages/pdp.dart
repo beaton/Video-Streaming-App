@@ -22,6 +22,9 @@ class _MyImageScreen extends State<ImageScreen> {
             padding: EdgeInsets.all(5),
             child: Column(children: [
               Image.network(movie.backdropPath, width: double.infinity),
+              Padding(
+                padding: EdgeInsets.all(3.0),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -37,6 +40,18 @@ class _MyImageScreen extends State<ImageScreen> {
                   ),
                 ],
               ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  getButton(),
+                ],
+              ),
+              Padding(
+                padding: EdgeInsets.all(5),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -44,9 +59,9 @@ class _MyImageScreen extends State<ImageScreen> {
                     'Release date',
                     style: TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.0,
                       fontSize: 15,
                     ),
                   ),
@@ -54,9 +69,9 @@ class _MyImageScreen extends State<ImageScreen> {
                     movie.releaseDate,
                     style: TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.0,
                       fontSize: 15,
                     ),
                   ),
@@ -69,9 +84,9 @@ class _MyImageScreen extends State<ImageScreen> {
                     'Popularity',
                     style: TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.0,
                       fontSize: 15,
                     ),
                   ),
@@ -79,9 +94,34 @@ class _MyImageScreen extends State<ImageScreen> {
                     movie.popularity.toString(),
                     style: TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.0,
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Vote average',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300,
+                      fontFamily: 'Roboto',
+                      letterSpacing: 0.0,
+                      fontSize: 15,
+                    ),
+                  ),
+                  Text(
+                    movie.voteAverage.toString() + '/10',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300,
+                      fontFamily: 'Roboto',
+                      letterSpacing: 0.0,
                       fontSize: 15,
                     ),
                   ),
@@ -95,14 +135,17 @@ class _MyImageScreen extends State<ImageScreen> {
                     movie.voteCount.toString() + ' Reviews',
                     style: TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.0,
                       fontSize: 15,
                     ),
                   ),
-                  stars,
+                  getStars(movie),
                 ],
+              ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
               ),
               Row(
                 ///mainAxisSize: MainAxisSize.min,
@@ -111,15 +154,45 @@ class _MyImageScreen extends State<ImageScreen> {
               )
             ])));
   }
+
+  Row getStars(Movie aMovie) {
+    List<Icon> stars = new List(5);
+    double rating = aMovie.voteAverage / 2;
+    for (var i = 0; i < stars.length; i++) {
+      if (rating <= i) {
+        stars[i] = Icon(Icons.star, color: Colors.grey[300]);
+      } else {
+        stars[i] = Icon(Icons.star, color: Colors.green[500]);
+      }
+    }
+
+    var starsRow = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: stars,
+    );
+
+    return starsRow;
+  }
 }
 
-var stars = Row(
-  mainAxisSize: MainAxisSize.min,
-  children: [
-    Icon(Icons.star, color: Colors.blue[500]),
-    Icon(Icons.star, color: Colors.blue[500]),
-    Icon(Icons.star, color: Colors.blue[500]),
-    Icon(Icons.star, color: Colors.black),
-    Icon(Icons.star, color: Colors.black),
-  ],
-);
+/// Play button
+OutlineButton getButton() {
+  return OutlineButton(
+    onPressed: () => null,
+    child: Stack(
+      children: <Widget>[
+        Align(
+            alignment: Alignment.centerLeft,
+            child: Icon(
+              Icons.play_arrow_outlined,
+              size: 40.0,
+            )),
+      ],
+    ),
+    highlightedBorderColor: Colors.orange,
+    color: Colors.green,
+    borderSide: new BorderSide(color: Colors.black),
+    shape: CircleBorder(),
+  );
+  //shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0)));
+}
