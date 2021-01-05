@@ -14,7 +14,7 @@ final String topRated = 'https://api.themoviedb.org/3/movie/top_rated';
 final String similar = 'https://api.themoviedb.org/3/movie/429/similar';
 
 /// Singleton instance to retrieve and cache movies.
-class MovieProvider {
+class MovieProvider extends ChangeNotifier {
   MovieProvider._privateConstructor();
 
   static MovieProvider get instance => _instance;

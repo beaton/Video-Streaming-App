@@ -19,11 +19,11 @@ class _MyImageScreen extends State<ImageScreen> {
           title: Text('Product Detail Page'),
         ),
         body: Container(
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(6),
             child: Column(children: [
               Image.network(movie.backdropPath, width: double.infinity),
               Padding(
-                padding: EdgeInsets.all(3.0),
+                padding: EdgeInsets.all(0.0),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,6 +38,7 @@ class _MyImageScreen extends State<ImageScreen> {
                       fontSize: 20,
                     ),
                   ),
+                  getStars(movie),
                 ],
               ),
               Padding(
@@ -106,7 +107,7 @@ class _MyImageScreen extends State<ImageScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Vote average',
+                    movie.voteCount.toString() + ' Reviews',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w300,
@@ -125,23 +126,6 @@ class _MyImageScreen extends State<ImageScreen> {
                       fontSize: 15,
                     ),
                   ),
-                ],
-              ),
-              Row(
-                ///mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    movie.voteCount.toString() + ' Reviews',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w300,
-                      fontFamily: 'Roboto',
-                      letterSpacing: 0.0,
-                      fontSize: 15,
-                    ),
-                  ),
-                  getStars(movie),
                 ],
               ),
               Padding(

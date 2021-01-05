@@ -25,6 +25,9 @@ dependencies:
     sdk: flutter          
   english_words: ^3.1.5
 
+  # Data provider
+  provider: ^3.0.0
+
   # For the home page image carousel.
   carousel_slider: ^2.3.1
 

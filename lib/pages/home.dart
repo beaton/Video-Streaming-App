@@ -1,75 +1,37 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:video_streamer/component/jacketList.dart';
-import 'package:video_streamer/data/movieProvider.dart';
-import 'package:video_streamer/model/movie.dart';
+import 'package:video_streamer/pages/lander.dart';
 
-final List<String> bannerList = [
-  'https://image.tmdb.org/t/p/w500/zhCu4iJHSKBf4uAIQyaR5IQ5nhi.jpg',
-  'https://image.tmdb.org/t/p/w500/ulSuhpY9iHXp2fz0ixMGhbTrZCM.jpg'
-];
+/// The Home (Now on Sale) Page.
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title}) : super(key: key);
+  final String title;
+  static final String customAppThemeId = 'custom_theme';
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
 /// The Movies Page.
-class HomePage extends StatelessWidget {
-  static final String customAppThemeId = 'custom_theme';
+class _HomePageState extends State<HomePage> {
+  // Bottom navigation tab index, reflects current selected tab.
+  int _currentIndex = 0;
+
+  // Tab indecies for bottom navigation.
+  final List<Widget> _children = [
+    LanderPage(),
+    LanderPage(), //Should be Search Page
+    LanderPage(), //Should be Download Page
+    LanderPage(), //Should be Settings Page
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Home")),
-      body: ListView(
-        padding: const EdgeInsets.all(0.0),
-        children: <Widget>[
-          Container(
-            child: CarouselSlider(
-              options: CarouselOptions(
-                viewportFraction: 0.8,
-                autoPlay: true,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
-                aspectRatio: 2,
-              ),
-              items: bannerList.map((i) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 0.0),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(i),
-                            fit: BoxFit.fill,
-                          ),
-                        ));
-                  },
-                );
-              }).toList(),
-            ),
-          ),
-          Container(
-              padding: EdgeInsets.all(0.0),
-              margin: EdgeInsets.only(top: 10.0),
-              // 'Recommended for you' list
-              child: JacketList(
-                  movieList: getPopularMovieList(),
-                  title: 'Recommended for you')),
-          Container(
-              padding: EdgeInsets.all(0.0),
-              margin: EdgeInsets.symmetric(vertical: 0.0),
-              // 'New to the app' list
-              child: JacketList(
-                  movieList: getTopRatedMovieList(),
-                  title: 'New to The <app name goes here>')),
-          Container(
-              padding: EdgeInsets.all(0.0),
-              margin: EdgeInsets.symmetric(vertical: 0.0),
-              // 'New to the app' list
-              child: JacketList(
-                  movieList: getSimilarMovieList(),
-                  title: 'Because you watched')),
-        ],
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: _children[_currentIndex],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -90,31 +52,17 @@ class HomePage extends StatelessWidget {
             label: 'Settings',
           ),
         ],
-        currentIndex: 0,
+        currentIndex: _currentIndex,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-        //onTap: _onItemTapped,
+        onTap: onTabTapped,
       ),
     );
   }
 
-  List<Movie> getPopularMovieList() {
-    List<Movie> movies = MovieProvider.instance.popularMovies;
-    return movies;
-  }
-
-  List<Movie> getTopRatedMovieList() {
-    List<Movie> movies = MovieProvider.instance.topRatedMovies;
-    return movies;
-  }
-
-  List<Movie> getSpaghettiMovieList() {
-    List<Movie> movies = MovieProvider.instance.spaghettiMovies;
-    return movies;
-  }
-
-  List<Movie> getSimilarMovieList() {
-    List<Movie> movies = MovieProvider.instance.similarMovies;
-    return movies;
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
   }
 }
