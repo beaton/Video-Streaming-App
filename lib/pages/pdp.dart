@@ -291,7 +291,7 @@ class _MyImageScreen extends State<ImageScreen> {
       if (rating <= i) {
         stars[i] = Icon(Icons.star, color: Colors.grey[300]);
       } else {
-        stars[i] = Icon(Icons.star, color: Colors.green[500]);
+        stars[i] = Icon(Icons.star, color: Colors.black);
       }
     }
 

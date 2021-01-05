@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:video_streamer/component/jacketList.dart';
 import 'package:video_streamer/data/movieProvider.dart';
 import 'package:video_streamer/model/movie.dart';
+import 'package:video_streamer/pages/pdp.dart';
 
 class LanderPage extends StatefulWidget {
   LanderPage({Key key, this.title}) : super(key: key);
@@ -16,11 +17,6 @@ class LanderPage extends StatefulWidget {
 
 // Stateful widget to display on sale items.
 class _LanderPageState extends State<LanderPage> {
-  final List<String> bannerList = [
-    'https://image.tmdb.org/t/p/w500/zhCu4iJHSKBf4uAIQyaR5IQ5nhi.jpg',
-    'https://image.tmdb.org/t/p/w500/ulSuhpY9iHXp2fz0ixMGhbTrZCM.jpg'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -36,7 +32,7 @@ class _LanderPageState extends State<LanderPage> {
               enlargeCenterPage: true,
               aspectRatio: 2,
             ),
-            items: bannerList.map((i) {
+            items: getBannerMovieList().map((i) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
@@ -44,10 +40,18 @@ class _LanderPageState extends State<LanderPage> {
                       margin: EdgeInsets.symmetric(horizontal: 0.0),
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(i),
+                          image: NetworkImage(i.backdropPath),
                           fit: BoxFit.fill,
                         ),
-                      ));
+                      ),
+                      child: GestureDetector(onTap: () {
+                        Navigator.push<Widget>(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ImageScreen(i),
+                          ),
+                        );
+                      }));
                 },
               );
             }).toList(),
@@ -95,6 +99,11 @@ class _LanderPageState extends State<LanderPage> {
 
   List<Movie> getSimilarMovieList() {
     List<Movie> movies = MovieProvider.instance.similarMovies;
+    return movies;
+  }
+
+  List<Movie> getBannerMovieList() {
+    List<Movie> movies = MovieProvider.instance.bannerMovies;
     return movies;
   }
 }

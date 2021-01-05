@@ -13,6 +13,10 @@ final String topRated = 'https://api.themoviedb.org/3/movie/top_rated';
 
 final String similar = 'https://api.themoviedb.org/3/movie/429/similar';
 
+final String banner = 'https://api.themoviedb.org/3/discover/movie';
+
+///discover/movie?sort_by=popularity.desc
+
 /// Singleton instance to retrieve and cache movies.
 class MovieProvider extends ChangeNotifier {
   MovieProvider._privateConstructor();
@@ -45,6 +49,9 @@ class MovieProvider extends ChangeNotifier {
   // Similar movies to x (have to specify x in the query).
   List<Movie> similarMovies;
 
+  // Movies to be displayed in the lander banner.
+  List<Movie> bannerMovies;
+
   /// Initialize this Singleton instance.
   Future<void> init() async {
     tmdbJacketBaseUrl = cfg.getValue("tmdbJacketBaseUrl");
@@ -55,6 +62,7 @@ class MovieProvider extends ChangeNotifier {
     popularMovies = await fetchMovies(url: popular);
     topRatedMovies = await fetchMovies(url: topRated);
     similarMovies = await fetchMovies(url: similar);
+    bannerMovies = await fetchMovies(url: banner);
   }
 
   /// Refresh the lists by calling the init() method.
