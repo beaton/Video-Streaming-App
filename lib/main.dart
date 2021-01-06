@@ -45,7 +45,7 @@ class AvodApp extends StatelessWidget {
             if (platformBrightness == Brightness.dark) {
               controller.setTheme('dark');
             } else {
-              controller.setTheme('custom_theme');
+              controller.setTheme('dark');
             }
             controller.forgetSavedTheme();
           }
