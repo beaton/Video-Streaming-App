@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:video_streamer/model/movie.dart';
 
+// Suggested or recommended list of videos that are related
+// to the video currently being viewed.
+
 class SuggestedList extends StatelessWidget {
   // imgList is a list of image urls, set from the constructor.
   final List<Movie> movieList;
