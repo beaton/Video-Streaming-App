@@ -9,13 +9,26 @@ class ImageScreen extends StatefulWidget {
   _MyImageScreen createState() => _MyImageScreen(movie);
 }
 
-class _MyImageScreen extends State<ImageScreen> {
+class _MyImageScreen extends State<ImageScreen>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
   final List<Tab> tabs = <Tab>[
     Tab(text: 'SUGGESTED'),
     Tab(text: 'EXTRAS'),
     Tab(text: 'DETAILS'),
   ];
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 3, vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   final Movie movie;
   _MyImageScreen(this.movie);
@@ -25,7 +38,7 @@ class _MyImageScreen extends State<ImageScreen> {
         appBar: AppBar(
           title: Text('Product Detail Page'),
         ),
-        body: Container(
+        body: SingleChildScrollView(
             padding: EdgeInsets.all(10),
             child: Column(children: [
               Image.network(movie.backdropPath, width: double.infinity),
@@ -257,10 +270,15 @@ class _MyImageScreen extends State<ImageScreen> {
               Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    SizedBox(
+                    Container(
+                        // Need to state tabView height!
+                        height: tabs.length * 100.toDouble(),
+
+                        // TabView width
                         width: MediaQuery.of(context).size.width * 0.95,
                         child: DefaultTabController(
                           length: tabs.length,
+
                           // The Builder widget is used to have a different BuildContext to access
                           // closest DefaultTabController.
                           child: Builder(builder: (BuildContext context) {
@@ -268,16 +286,30 @@ class _MyImageScreen extends State<ImageScreen> {
                                 DefaultTabController.of(context);
                             tabController.addListener(() {
                               if (!tabController.indexIsChanging) {
+                                var currentTab = tabController.index;
+                                print("Current Tab: " + currentTab.toString());
+
                                 // Your code goes here.
                                 // To get index of current tab use tabController.index
                               }
                             });
-                            return TabBar(
-                              unselectedLabelColor: Colors.grey,
-                              indicatorColor: Colors.white,
-                              labelColor: Colors.white,
-                              tabs: tabs,
-                            );
+                            return Center(
+                                child: Column(children: <Widget>[
+                              TabBar(
+                                unselectedLabelColor: Colors.grey,
+                                indicatorColor: Colors.white,
+                                labelColor: Colors.white,
+                                tabs: tabs,
+                                controller: _tabController,
+                              ),
+                              Expanded(
+                                child: TabBarView(
+                                  // What to display in the tabViews
+                                  children: tabs,
+                                  controller: _tabController,
+                                ),
+                              ),
+                            ]));
                           }),
                         ))
                   ])
@@ -335,23 +367,4 @@ SizedBox getButton(BuildContext context) {
                       color: Colors.white,
                     ),
                   ]))));
-
-  //   RaisedButton(
-  //       shape:
-  //           RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-  //       onPressed: () => null,
-  //       textColor: Colors.white,
-  //       color: Colors.blue,
-  //       child: Stack(
-  //         children: <Widget>[
-  //           Align(
-  //               alignment: Alignment.center,
-  //               child: Icon(
-  //                 Icons.play_arrow_outlined,
-  //                 size: 40.0,
-  //               )),
-  //         ],
-  //       )),
-  // );
-  //shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0)));
 }
