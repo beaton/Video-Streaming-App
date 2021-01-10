@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_streamer/component/suggested.dart';
 import 'package:video_streamer/model/movie.dart';
 
 class ImageScreen extends StatefulWidget {
@@ -11,6 +12,13 @@ class ImageScreen extends StatefulWidget {
 
 class _MyImageScreen extends State<ImageScreen>
     with SingleTickerProviderStateMixin {
+  // _MyImageScreen constructor.
+  _MyImageScreen(this.movie);
+
+  // Product Detail Page (PDP) is for this movie.
+  final Movie movie;
+
+  // Controller for the 'suggested | extras | details' tab view.
   TabController _tabController;
   final List<Tab> tabs = <Tab>[
     Tab(text: 'SUGGESTED'),
@@ -30,8 +38,6 @@ class _MyImageScreen extends State<ImageScreen>
     super.dispose();
   }
 
-  final Movie movie;
-  _MyImageScreen(this.movie);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -305,7 +311,7 @@ class _MyImageScreen extends State<ImageScreen>
                               Expanded(
                                 child: TabBarView(
                                   // What to display in the tabViews
-                                  children: tabs,
+                                  children: getTabViewContent(),
                                   controller: _tabController,
                                 ),
                               ),
@@ -333,6 +339,15 @@ class _MyImageScreen extends State<ImageScreen>
     );
 
     return starsRow;
+  }
+
+  // Return a list of tabBarViews.
+  List<Tab> getTabViewContent() {
+    List<Tab> tabList = new List();
+    tabList.add(new Tab(child: SuggestedList(movie: movie)));
+    tabList.add(new Tab(child: Text('Suggested')));
+    tabList.add(new Tab(child: Text('Details')));
+    return tabList;
   }
 }
 
