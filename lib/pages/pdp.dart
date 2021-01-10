@@ -332,7 +332,6 @@ class _MyImageScreen extends State<ImageScreen>
         stars[i] = Icon(Icons.star, color: Colors.white);
       }
     }
-
     var starsRow = Row(
       mainAxisSize: MainAxisSize.min,
       children: stars,

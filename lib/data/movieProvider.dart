@@ -13,6 +13,8 @@ final String topRated = 'https://api.themoviedb.org/3/movie/top_rated';
 
 final String similar = 'https://api.themoviedb.org/3/movie/429/similar';
 
+final String recommended = 'https://api.themoviedb.org/3/movie/';
+
 final String banner = 'https://api.themoviedb.org/3/discover/movie';
 
 ///discover/movie?sort_by=popularity.desc
@@ -106,5 +108,11 @@ class MovieProvider extends ChangeNotifier {
 
     String backdropPath = aMovie.backdropPath;
     aMovie.backdropPath = tmdbBannerBaseUrl + backdropPath;
+  }
+
+  Future<List<Movie>> getSimilarMovies(Movie aMovie) async {
+    int id = aMovie.id;
+    String path = recommended + id.toString() + "/similar";
+    return await fetchMovies(url: path);
   }
 }
