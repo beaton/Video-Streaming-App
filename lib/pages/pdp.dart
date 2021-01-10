@@ -344,7 +344,7 @@ class _MyImageScreen extends State<ImageScreen>
   List<Tab> getTabViewContent() {
     List<Tab> tabList = new List();
     tabList.add(new Tab(child: SuggestedList(movie: movie)));
-    tabList.add(new Tab(child: Text('Suggested')));
+    tabList.add(new Tab(child: Text('Extras')));
     tabList.add(new Tab(child: Text('Details')));
     return tabList;
   }

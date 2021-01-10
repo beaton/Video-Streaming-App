@@ -119,6 +119,7 @@ class _SuggestedList extends State<SuggestedList> {
             }));
   }
 
+  // GET a list of movies that are similar (recommended) to the one being displayed in the PDP screen.
   Future<List<Movie>> getSimilarMovieList() async {
     Future<List<Movie>> list =
         MovieProvider.instance.getSimilarMovies(widget.movie);
@@ -126,5 +127,6 @@ class _SuggestedList extends State<SuggestedList> {
     setState(() {
       _movieList = list;
     });
+    return list;
   }
 }
