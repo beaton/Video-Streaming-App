@@ -40,10 +40,10 @@ TMDB APIkey can be obtained for free from https://developers.themoviedb.org/3
 
 ## Platform support
 
-Although I've focused entirely on iOS and specifically the iPhone form factor at this point, there is support for a variety of platforms available today or in development by the Flutter team,
+Although I've focused entirely on iOS and specifically the iPhone form factor at this point, there is support for a variety of platforms available today or in development by the Flutter team or other contributors from the open source community,
 
 * Desktop: desktop support is in preview for Windows, macOS, and Linux.
-* Web: There is support for Web: https://flutter.dev/web (no browser plug-in required). This project does not yet support Web.
+* Web: There is support for Web: https://flutter.dev/web (no browser plug-in required).
 * Roku: There is interest in supporting Roku: https://github.com/flutter/flutter/issues/37159 but as of yet, nothing available, I suspect it would need access to NDK vs. BrightScript for performance reasons so it's unlikely Roku will be available anytime soon.
 * Tizen: There is active development underway for Tizen support: https://github.com/flutter-tizen/flutter-tizen
-* UWP: There is active development underway for Windows 10 desktop, Windows 10x emulator, XBOX: https://github.com/clarkezone/fluttergalleryuwp
+* UWP: There is active development underway for Windows 10 desktop, Windows 10x emulator and XBOX: https://github.com/clarkezone/fluttergalleryuwp
