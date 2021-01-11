@@ -1,6 +1,8 @@
 # Video on Demand Application
 
-Welcome to my playground. This is simply an opportunity to play with Flutter in an effort to learn - suggestions welcome.
+Welcome to my playground. This is simply an opportunity to play with **Flutter** in an effort to learn - suggestions welcome.
+
+FYI there is interest in supporting 10ft devices, starting with Roku: https://github.com/flutter/flutter/issues/37159 but as of yet, nothing available.
 
 ## Getting Started
 
@@ -19,11 +21,11 @@ Minimum configurtion (tested)
 * Engine • revision ae90085a84
 * Tools • Dart 2.10.4
 
-Don't forget to run Flutter doctor.
+Don't forget to run Flutter doctor immediately after the installation.
 
 ### Configuration file
 
-You will need to create a configuration file: /assets/cfg/properties.json
+You will need to create the following configuration file: /assets/cfg/properties.json
 
 With the following contents, 
 ```
@@ -34,3 +36,4 @@ With the following contents,
   "language": "en-US"
 }
 ```
+TMDB APIkey can be obtained for free from https://developers.themoviedb.org/3
