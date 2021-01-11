@@ -64,7 +64,9 @@ class _MyImageScreen extends State<ImageScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    movie.title,
+                    truncateWithEllipsis(movie.title, 30),
+                    softWrap: false,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w400,
@@ -73,9 +75,14 @@ class _MyImageScreen extends State<ImageScreen>
                       fontSize: 20,
                     ),
                   ),
-                  getStars(movie),
                 ],
               ),
+              Padding(
+                padding: EdgeInsets.all(5.0),
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                getStars(movie),
+              ]),
               Padding(
                 padding: EdgeInsets.all(5.0),
               ),
@@ -348,6 +355,12 @@ class _MyImageScreen extends State<ImageScreen>
     tabList.add(new Tab(child: Text('Details')));
     return tabList;
   }
+}
+
+String truncateWithEllipsis(String aString, double cutoff) {
+  return (aString.length <= cutoff)
+      ? aString
+      : '${aString.substring(0, cutoff.toInt())}...';
 }
 
 /// Play button
