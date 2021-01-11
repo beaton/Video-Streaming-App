@@ -2,6 +2,8 @@
 
 Welcome to my playground. This is simply an opportunity to play with **Flutter** in an effort to learn - suggestions welcome.
 
+<img src="avod-recording.gif" width="223" height="454"/>
+
 ## Getting Started
 
 A few resources to get you started:
