@@ -95,19 +95,22 @@ class MovieProvider extends ChangeNotifier {
 
   // Post-process any tmdb content retrieved.
   List<Movie> processMovies(List<Movie> movies) {
+    List<Movie> list = new List<Movie>();
     for (var item in movies) {
-      expandUrls(item);
+      String aPath = item.posterPath;
+      if (aPath == null) {
+        continue;
+      }
+      item.posterPath = tmdbJacketBaseUrl + aPath;
+
+      String backdropPath = item.backdropPath;
+      if (backdropPath == null) {
+        continue;
+      }
+      item.backdropPath = tmdbBannerBaseUrl + backdropPath;
+      list.add(item);
     }
-    return movies;
-  }
-
-  // Prepend the tmdb URL to each movie poster path.
-  expandUrls(Movie aMovie) {
-    String aPath = aMovie.posterPath;
-    aMovie.posterPath = tmdbJacketBaseUrl + aPath;
-
-    String backdropPath = aMovie.backdropPath;
-    aMovie.backdropPath = tmdbBannerBaseUrl + backdropPath;
+    return list;
   }
 
   Future<List<Movie>> getSimilarMovies(Movie aMovie) async {
