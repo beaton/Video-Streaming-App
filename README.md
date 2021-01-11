@@ -2,8 +2,6 @@
 
 Welcome to my playground. This is simply an opportunity to play with **Flutter** in an effort to learn - suggestions welcome.
 
-FYI there is interest in supporting 10ft devices, starting with Roku: https://github.com/flutter/flutter/issues/37159 but as of yet, nothing available.
-
 ## Getting Started
 
 A few resources to get you started:
@@ -37,3 +35,13 @@ With the following contents,
 }
 ```
 TMDB APIkey can be obtained for free from https://developers.themoviedb.org/3
+
+## Platform support
+
+Although I've focused entirely on iOS and specifically the iPhone form factor at this point, there is support for a variety of platforms available today or in development by the Flutter team,
+
+* Desktop: desktop support is in preview for Windows, macOS, and Linux.
+* Web: There is support for Web: https://flutter.dev/web (no browser plug-in required). This project does not yet support Web.
+* Roku: There is interest in supporting Roku: https://github.com/flutter/flutter/issues/37159 but as of yet, nothing available, I suspect it would need access to NDK vs. BrightScript for performance reasons so it's unlikely Roku will be available anytime soon.
+* Tizen: There is active development underway for Tizen support: https://github.com/flutter-tizen/flutter-tizen
+
