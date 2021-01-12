@@ -1,6 +1,6 @@
 # Video on Demand Application
 
-Welcome to my playground. This is simply an opportunity to play with **Flutter** in an effort to learn - suggestions welcome.
+Welcome to my playground. This is simply an opportunity to play with **Flutter** in an effort to learn - contributions welcome.
 
 <img src="avod-recording.gif" width="223" height="454"/>
 
@@ -44,6 +44,6 @@ Although I've focused entirely on iOS and specifically the iPhone form factor at
 
 * Desktop: desktop support is in preview for Windows, macOS, and Linux.
 * Web: There is support for Web: https://flutter.dev/web (no browser plug-in required).
-* Roku: There is interest in supporting Roku: https://github.com/flutter/flutter/issues/37159 but as of yet, nothing available, I suspect it would need access to NDK vs. BrightScript for performance reasons so it's unlikely Roku will be available anytime soon.
+* Roku: There is interest in supporting Roku: https://github.com/flutter/flutter/issues/37159 but as of yet, nothing available.
 * Tizen: There is active development underway for Tizen support: https://github.com/flutter-tizen/flutter-tizen
 * UWP: There is active development underway for Windows 10 desktop, Windows 10x emulator and XBOX: https://github.com/clarkezone/fluttergalleryuwp
