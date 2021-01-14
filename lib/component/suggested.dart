@@ -40,6 +40,7 @@ class _SuggestedList extends State<SuggestedList> {
                       padding: EdgeInsets.all(0.0),
                       margin: EdgeInsets.symmetric(vertical: 0.0),
                       height: 240,
+                      // .builder only renders images that fit on the screen.
                       child: GridView.builder(
                           //physics: NeverScrollableScrollPhysics(),
                           itemCount: movies.length,
@@ -66,20 +67,20 @@ class _SuggestedList extends State<SuggestedList> {
                                               child: Container(
                                                   decoration: BoxDecoration(
                                                     image: DecorationImage(
-                                                      image: NetworkImage(
-                                                          movie.posterPath),
+                                                      image: ((movie
+                                                                  .posterPath ==
+                                                              null)
+                                                          ? AssetImage(
+                                                              'assets/images/happy.png')
+                                                          : NetworkImage(movie
+                                                              .posterPath)),
                                                       fit: BoxFit.fill,
                                                     ),
                                                   ),
                                                   child: GestureDetector(
                                                       onTap: () {
-                                                    Navigator.push<Widget>(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ImageScreen(movie),
-                                                      ),
-                                                    );
+                                                    Navigator.of(context).push(
+                                                        _createRoute(movie));
                                                   })))
                                         ])));
                           }))
@@ -117,6 +118,26 @@ class _SuggestedList extends State<SuggestedList> {
                 ),
               );
             }));
+  }
+
+  Route _createRoute(Movie aMovie) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          ImageScreen(aMovie),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   // GET a list of movies that are similar (recommended) to the one being displayed in the PDP screen.

@@ -45,12 +45,7 @@ class _LanderPageState extends State<LanderPage> {
                         ),
                       ),
                       child: GestureDetector(onTap: () {
-                        Navigator.push<Widget>(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ImageScreen(i),
-                          ),
-                        );
+                        Navigator.of(context).push(_createRoute(i));
                       }));
                 },
               );
@@ -82,28 +77,53 @@ class _LanderPageState extends State<LanderPage> {
     );
   }
 
+  Route _createRoute(Movie aMovie) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          ImageScreen(aMovie),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
+  }
+
   List<Movie> getPopularMovieList() {
     List<Movie> movies = MovieProvider.instance.popularMovies;
+    if (movies.isEmpty) return <Movie>[];
     return movies;
   }
 
   List<Movie> getTopRatedMovieList() {
     List<Movie> movies = MovieProvider.instance.topRatedMovies;
+    if (movies.isEmpty) return <Movie>[];
     return movies;
   }
 
   List<Movie> getSpaghettiMovieList() {
     List<Movie> movies = MovieProvider.instance.spaghettiMovies;
+    if (movies.isEmpty) return <Movie>[];
     return movies;
   }
 
   List<Movie> getSimilarMovieList() {
     List<Movie> movies = MovieProvider.instance.similarMovies;
+    if (movies.isEmpty) return <Movie>[];
     return movies;
   }
 
   List<Movie> getBannerMovieList() {
     List<Movie> movies = MovieProvider.instance.bannerMovies;
+    if (movies.isEmpty) return <Movie>[];
     return movies;
   }
 }
