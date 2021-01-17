@@ -330,7 +330,9 @@ class _MyImageScreen extends State<ImageScreen>
   }
 
   Row getStars(Movie aMovie) {
-    List<Icon> stars = new List(5);
+    int length = 5;
+    Icon star = new Icon(Icons.star);
+    List<Icon> stars = List<Icon>.filled(length, star, growable: false);
     double rating = aMovie.voteAverage / 2;
     for (var i = 0; i < stars.length; i++) {
       if (rating <= i) {
@@ -349,7 +351,7 @@ class _MyImageScreen extends State<ImageScreen>
 
   // Return a list of tabBarViews.
   List<Tab> getTabViewContent() {
-    List<Tab> tabList = new List();
+    List<Tab> tabList = new List<Tab>.empty(growable: true);
     tabList.add(new Tab(child: SuggestedList(movie: movie)));
     tabList.add(new Tab(child: Text('Extras')));
     tabList.add(new Tab(child: Text('Details')));

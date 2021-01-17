@@ -95,7 +95,7 @@ class MovieProvider extends ChangeNotifier {
 
   // Post-process any tmdb content retrieved.
   List<Movie> processMovies(List<Movie> movies) {
-    List<Movie> list = new List<Movie>();
+    List<Movie> list = [];
     for (var item in movies) {
       String aPath = item.posterPath;
       if (aPath == null) {

@@ -42,7 +42,6 @@ class StyleProvider {
     brightness: Brightness.dark,
     canvasColor: const Color(0xFF272822),
     cardColor: const Color(0xFF272822),
-    cursorColor: const Color(0xFF66D9EF),
     errorColor: const Color(0xFF90274A),
     fontFamily: 'OpenSans',
     highlightColor: const Color(0xFFAE81FF),

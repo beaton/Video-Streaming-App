@@ -27,26 +27,35 @@ dependencies:
   # https://pub.dev/packages/video_player/install
   video_player: ^1.0.1
 
+  # A package containing the most ~5000 used English words and some utility functions
+  # https://pub.dev/packages/english_words
   english_words: ^3.1.5
 
   # Data provider
-  provider: ^3.0.0
+  # https://pub.dev/packages/provider/install
+  provider: ^4.3.2+4
+
+  # Application theme management
+  theme_provider: ^0.4.0
 
   # For the home page image carousel.
+  # https://pub.dev/packages/carousel_slider
   carousel_slider: ^2.3.1
 
   # For HTTP(s) requests.
   http: ^0.12.2
 
   # For configurationfiles.
+  # https://pub.dev/packages/global_configuration/versions
   global_configuration: ^1.6.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
-  # Application theme management
-  theme_provider: ^0.4.0
+  # Internationalization and localization facilities
+  # https://pub.dev/packages/intl/versions
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:
