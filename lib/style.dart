@@ -9,6 +9,11 @@ final darkTheme = ThemeData(
   accentIconTheme: IconThemeData(color: Colors.grey),
   iconTheme: IconThemeData(color: Colors.grey),
   dividerColor: Colors.black12,
+  appBarTheme: AppBarTheme(
+    color: Colors.grey[850],
+    //foregroundColor: Colors.grey[900],
+    //backgroundColor: Colors.grey[900],
+  ),
   switchTheme: SwitchThemeData(
     thumbColor: MaterialStateProperty.all(Colors.white),
     trackColor: MaterialStateProperty.all(Colors.grey),
