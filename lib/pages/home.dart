@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           _title,
-          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Center(
@@ -65,8 +64,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
         currentIndex: _currentIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
         onTap: onTabTapped,
       ),
     );

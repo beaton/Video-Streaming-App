@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:theme_provider/theme_provider.dart';
 import 'package:video_streamer/init.dart';
 import 'package:video_streamer/pages/home.dart';
 import 'package:video_streamer/splash_screen.dart';
+import 'package:video_streamer/style.dart';
 
 //void main() => runApp(AvodApp());
 
@@ -32,6 +34,7 @@ class AvodApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return ThemeProvider(
         saveThemesOnChange: true,
         loadThemeOnInit: false,
@@ -45,27 +48,27 @@ class AvodApp extends StatelessWidget {
             if (platformBrightness == Brightness.dark) {
               controller.setTheme('dark');
             } else {
-              controller.setTheme('dark');
+              controller.setTheme('light');
             }
             controller.forgetSavedTheme();
           }
         },
         themes: <AppTheme>[
-          AppTheme.light(id: 'light'),
-          AppTheme.dark(id: 'dark'),
           AppTheme(
-            description: "custom theme",
-            id: "custom_theme", // Id(or name) of the theme(Has to be unique)
-            data: ThemeData(
-              // Real theme data
-              primaryColor: Colors.white,
-              accentColor: Colors.red,
-            ),
+            description: "custom dark theme",
+            id: "dark_theme",
+            data: darkTheme,
+          ),
+          AppTheme(
+            description: "custom light theme",
+            id: "light_theme",
+            data: lightTheme,
           ),
         ],
         child: ThemeConsumer(
             child: Builder(
                 builder: (themeContext) => MaterialApp(
+                      debugShowCheckedModeBanner: false,
                       title: 'Initialization',
                       theme: ThemeProvider.themeOf(themeContext).data,
                       home: FutureBuilder(

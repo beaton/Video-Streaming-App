@@ -64,6 +64,12 @@ class _LanderPageState extends State<LanderPage> {
             margin: EdgeInsets.symmetric(vertical: 0.0),
             // 'New to the app' list
             child: JacketList(
+                movieList: getSimilarMovieList(), title: 'Continue watching')),
+        Container(
+            padding: EdgeInsets.all(0.0),
+            margin: EdgeInsets.symmetric(vertical: 0.0),
+            // 'New to the app' list
+            child: JacketList(
                 movieList: getTopRatedMovieList(),
                 title: 'New to The <app name goes here>')),
         Container(

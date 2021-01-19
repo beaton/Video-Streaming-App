@@ -68,7 +68,7 @@ class _MyImageScreen extends State<ImageScreen>
                     softWrap: false,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.5,
@@ -92,7 +92,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     movie.releaseDate,
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -102,7 +102,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     " ",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -113,13 +113,13 @@ class _MyImageScreen extends State<ImageScreen>
                       height: 5.0,
                       width: 5.0,
                       decoration: new BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.grey,
                         shape: BoxShape.circle,
                       )),
                   Text(
                     " ",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -129,7 +129,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     movie.adult ? 'Adult' : 'Family',
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -139,7 +139,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     " ",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -150,13 +150,13 @@ class _MyImageScreen extends State<ImageScreen>
                       height: 5.0,
                       width: 5.0,
                       decoration: new BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.grey,
                         shape: BoxShape.circle,
                       )),
                   Text(
                     " ",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -166,7 +166,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     'Fantasy',
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -181,7 +181,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     'HD',
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -191,7 +191,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     " ",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -202,13 +202,13 @@ class _MyImageScreen extends State<ImageScreen>
                       height: 5.0,
                       width: 5.0,
                       decoration: new BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.grey,
                         shape: BoxShape.circle,
                       )),
                   Text(
                     " 5.1",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -223,7 +223,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     movie.voteCount.toString() + ' Reviews',
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -233,7 +233,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     " ",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -244,13 +244,13 @@ class _MyImageScreen extends State<ImageScreen>
                       height: 5.0,
                       width: 5.0,
                       decoration: new BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.grey,
                         shape: BoxShape.circle,
                       )),
                   Text(
                     " ",
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -260,7 +260,7 @@ class _MyImageScreen extends State<ImageScreen>
                   Text(
                     movie.voteAverage.toString() + '/10',
                     style: TextStyle(
-                      color: Colors.white,
+                      //color: Colors.white,
                       fontWeight: FontWeight.w300,
                       fontFamily: 'Roboto',
                       letterSpacing: 0.0,
@@ -309,9 +309,9 @@ class _MyImageScreen extends State<ImageScreen>
                             return Center(
                                 child: Column(children: <Widget>[
                               TabBar(
-                                unselectedLabelColor: Colors.grey,
-                                indicatorColor: Colors.white,
-                                labelColor: Colors.white,
+                                //unselectedLabelColor: Colors.grey,
+                                //indicatorColor: Colors.white,
+                                //labelColor: Colors.white,
                                 tabs: tabs,
                                 controller: _tabController,
                               ),
@@ -336,9 +336,9 @@ class _MyImageScreen extends State<ImageScreen>
     double rating = aMovie.voteAverage / 2;
     for (var i = 0; i < stars.length; i++) {
       if (rating <= i) {
-        stars[i] = Icon(Icons.star, color: Colors.grey[700]);
+        stars[i] = Icon(Icons.star, color: Colors.grey);
       } else {
-        stars[i] = Icon(Icons.star, color: Colors.white);
+        stars[i] = Icon(Icons.star, color: Colors.black);
       }
     }
     var starsRow = Row(
