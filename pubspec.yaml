@@ -25,7 +25,7 @@ dependencies:
     sdk: flutter        
     
   # https://pub.dev/packages/video_player/install
-  video_player: ^1.0.1
+  # video_player: ^1.0.1
 
   # A package containing the most ~5000 used English words and some utility functions
   # https://pub.dev/packages/english_words
@@ -56,14 +56,6 @@ dependencies:
   # Internationalization and localization facilities
   # https://pub.dev/packages/intl/versions
   intl: ^0.16.1
-
-  # Adobe XD plugin.
-  # https://pub.dev/packages/adobe_xd/install
-  # adobe_xd: ^1.0.0+1
-
-  # Flutter SVG library (required by Adobe XD plugin)
-  # https://pub.dev/packages/flutter_svg/install
-  # flutter_svg: ^0.19.2+1
 
 dev_dependencies:
   flutter_test:

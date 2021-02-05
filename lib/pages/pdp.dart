@@ -47,7 +47,7 @@ class _MyImageScreen extends State<ImageScreen>
         body: SingleChildScrollView(
             padding: EdgeInsets.all(10),
             child: Column(children: [
-              Image.network(movie.backdropPath, width: double.infinity),
+              Image.network(movie.backdropPath),
               Padding(
                 padding: EdgeInsets.all(10.0),
               ),
@@ -281,14 +281,15 @@ class _MyImageScreen extends State<ImageScreen>
                 padding: EdgeInsets.all(5.0),
               ),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Container(
+                    SizedBox(
                         // Need to state tabView height!
                         height: tabs.length * 100.toDouble(),
 
                         // TabView width
-                        width: MediaQuery.of(context).size.width * 0.95,
+                        width: MediaQuery.of(context).size.width * 0.90,
+                        // margin: EdgeInsets.symmetric(horizontal: 0.0),
                         child: DefaultTabController(
                           length: tabs.length,
 
@@ -306,23 +307,28 @@ class _MyImageScreen extends State<ImageScreen>
                                 // To get index of current tab use tabController.index
                               }
                             });
-                            return Center(
-                                child: Column(children: <Widget>[
-                              TabBar(
-                                //unselectedLabelColor: Colors.grey,
-                                //indicatorColor: Colors.white,
-                                //labelColor: Colors.white,
-                                tabs: tabs,
-                                controller: _tabController,
-                              ),
-                              Expanded(
-                                child: TabBarView(
-                                  // What to display in the tabViews
-                                  children: getTabViewContent(),
-                                  controller: _tabController,
-                                ),
-                              ),
-                            ]));
+                            return Expanded(
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                  TabBar(
+                                    isScrollable: true,
+                                    //unselectedLabelColor: Colors.grey,
+                                    //indicatorColor: Colors.white,
+                                    //labelColor: Colors.white,
+                                    //labelStyle: TextStyle(fontSize: 12.0),
+                                    tabs: tabs,
+                                    controller: _tabController,
+                                  ),
+                                  // NOTE: TabBarView requires height to be defined in order to render.
+                                  Expanded(
+                                    child: TabBarView(
+                                      // What to display in the tabViews
+                                      children: getTabViewContent(),
+                                      controller: _tabController,
+                                    ),
+                                  ),
+                                ]));
                           }),
                         ))
                   ])
