@@ -10,6 +10,9 @@ class ImageScreen extends StatefulWidget {
   _MyImageScreen createState() => _MyImageScreen(movie);
 }
 
+/// MyImageScreen represents the Product Details Page or PDP in a video
+/// streaming application.  This is where details of a selected movie
+/// are shown, including hero image, ratings, reviews and recommendations.
 class _MyImageScreen extends State<ImageScreen>
     with SingleTickerProviderStateMixin {
   // _MyImageScreen constructor.
@@ -38,6 +41,8 @@ class _MyImageScreen extends State<ImageScreen>
     super.dispose();
   }
 
+  /// This is the main screen one which all other view widgets are placed
+  /// including, the appBar, the SingleChildScrollView and the tabController.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -281,7 +286,7 @@ class _MyImageScreen extends State<ImageScreen>
                 padding: EdgeInsets.all(5.0),
               ),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     SizedBox(
                         // Need to state tabView height!
@@ -302,21 +307,15 @@ class _MyImageScreen extends State<ImageScreen>
                               if (!tabController.indexIsChanging) {
                                 var currentTab = tabController.index;
                                 print("Current Tab: " + currentTab.toString());
-
-                                // Your code goes here.
-                                // To get index of current tab use tabController.index
                               }
                             });
-                            return Expanded(
+                            return SizedBox(
                                 child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: <Widget>[
                                   TabBar(
                                     isScrollable: true,
-                                    //unselectedLabelColor: Colors.grey,
-                                    //indicatorColor: Colors.white,
-                                    //labelColor: Colors.white,
-                                    //labelStyle: TextStyle(fontSize: 12.0),
                                     tabs: tabs,
                                     controller: _tabController,
                                   ),

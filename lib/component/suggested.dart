@@ -39,7 +39,7 @@ class _SuggestedList extends State<SuggestedList> {
                   Container(
                       padding: EdgeInsets.all(0.0),
                       margin: EdgeInsets.symmetric(vertical: 0.0),
-                      height: 240,
+                      height: 232,
                       // .builder only renders images that fit on the screen.
                       child: GridView.builder(
                           //physics: NeverScrollableScrollPhysics(),

@@ -11,8 +11,8 @@ final darkTheme = ThemeData(
   dividerColor: Colors.black12,
   tabBarTheme: TabBarTheme(
       labelPadding: EdgeInsets.all(10),
-      labelStyle: TextStyle(fontSize: 12.0),
-      unselectedLabelStyle: TextStyle(fontSize: 12.0)),
+      labelStyle: TextStyle(fontSize: 20.0),
+      unselectedLabelStyle: TextStyle(fontSize: 20.0)),
   appBarTheme: AppBarTheme(
     color: Colors.grey[850],
   ),
