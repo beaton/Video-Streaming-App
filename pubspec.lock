@@ -21,7 +21,7 @@ packages:
       name: carousel_slider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.1"
+    version: "3.0.0"
   characters:
     dependency: transitive
     description:
@@ -314,7 +314,7 @@ packages:
       name: theme_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.4.0+1"
   typed_data:
     dependency: transitive
     description:
