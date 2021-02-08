@@ -10,9 +10,9 @@ final darkTheme = ThemeData(
   iconTheme: IconThemeData(color: Colors.grey),
   dividerColor: Colors.black12,
   tabBarTheme: TabBarTheme(
-      labelPadding: EdgeInsets.all(10),
-      labelStyle: TextStyle(fontSize: 20.0),
-      unselectedLabelStyle: TextStyle(fontSize: 20.0)),
+      labelPadding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+      labelStyle: TextStyle(fontSize: 15.0),
+      unselectedLabelStyle: TextStyle(fontSize: 15.0)),
   appBarTheme: AppBarTheme(
     color: Colors.grey[850],
   ),
@@ -40,8 +40,9 @@ final lightTheme = ThemeData(
   iconTheme: IconThemeData(color: Colors.white),
   dividerColor: Colors.white54,
   tabBarTheme: TabBarTheme(
-      labelStyle: TextStyle(fontSize: 12.0),
-      unselectedLabelStyle: TextStyle(fontSize: 12.0)),
+      labelPadding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+      labelStyle: TextStyle(fontSize: 15.0),
+      unselectedLabelStyle: TextStyle(fontSize: 15.0)),
   switchTheme: SwitchThemeData(
     thumbColor: MaterialStateProperty.all(Colors.grey[800]),
     trackColor: MaterialStateProperty.all(Colors.grey),

@@ -286,7 +286,7 @@ class _MyImageScreen extends State<ImageScreen>
                 padding: EdgeInsets.all(5.0),
               ),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     SizedBox(
                         // Need to state tabView height!
@@ -312,7 +312,7 @@ class _MyImageScreen extends State<ImageScreen>
                             return SizedBox(
                                 child: Column(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                        MainAxisAlignment.spaceAround,
                                     children: <Widget>[
                                   TabBar(
                                     isScrollable: true,

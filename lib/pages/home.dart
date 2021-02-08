@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   @override
   initState() {
     super.initState();
-    _title = 'Some default value';
+    _title = 'Welcome';
   }
 
   // Tab indecies for bottom navigation.
